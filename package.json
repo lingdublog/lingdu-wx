@@ -1,0 +1,15 @@
+{
+  "name": "lingduwx",
+  "displayName": "lingduwx",
+  "version": "1.0.0",
+  "description": "lingduwx",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd vueproject && node build/dev-server.js",
+    "start": "cd vueproject && node build/dev-server.js",
+    "build": "cd vueproject && node build/build.js"
+  },
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}
