@@ -61,6 +61,7 @@ ul li{list-style: none;}
 .m1{margin: 1rem;}
 .m2{margin: 2rem;}
 .pl0{padding-left: 0;}
+.pl1{padding-left: 1rem;}
 .pl2{padding-left: 2rem;}
 .pt2{padding-top: 2rem;}
 .pb2{padding-bottom: 2rem;}
@@ -94,3 +95,6 @@ label{margin-bottom: 0;}
 .white-bg {background-color: #fff;}
 .ac{display: flex;align-items: center;}
 .jc{display: flex;justify-content: center;}
+.fixed-top{
+  position: fixed;left: 0;top: 0;width: 100%;z-index: 9999;}
+.tl{text-align: left;}
