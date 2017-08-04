@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="article-img flex1 ac">
-                                        <img :src="'http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=' + item.pic" width="100%" />
+                                        <img :src="item.pic" width="100%" />
                                     </div>
                                 </a>
 
@@ -163,7 +163,7 @@
             let params = {type: vm.category[vm.activeIndex].type};
             vm.getData (params);
           }
-        })
+        });
         callback ();
       },
       init(){
@@ -172,9 +172,11 @@
       },
       getData(params){
         let vm = this;
+        // 清空list
+        vm.list = [];
         common.fetchData ({
           method: 'get',
-          url: `/api/wx/list`,
+          url: `${API_HOST}/wx/list`,
           params: params,
           hideLoading: true,
           success: data => {
@@ -256,7 +258,7 @@
         transition: all 1s;
     }
 
-    .list li a{padding: 1rem 2rem; border-bottom: 1px solid #ccc;}
+    .list li a{padding: 1rem; border-bottom: 1px solid #ccc;}
     .list h3{margin-right: 1rem; font-size: 1.16rem;font-weight: normal;}
     .list .article-desc{display: flex;flex-direction: column;justify-content: center;}
     .list .article-author{margin: 0.6rem 1rem 0 0;font-size: 0.8rem;}
