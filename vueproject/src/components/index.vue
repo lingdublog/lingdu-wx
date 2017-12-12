@@ -13,7 +13,7 @@
 
                         <ul>
                             <li v-for="item in list">
-                                <router-link :to="{name: 'detail', params: {url: item.url}}" class="article-link flex">
+                                <a @click="toDetail()" class="article-link flex">
                                     <div class="article-desc flex2">
                                         <h3 class="article-title tl">{{ item.title }}</h3>
                                         <div class="article-author">
@@ -25,7 +25,7 @@
                                     <div class="article-img flex1 ac">
                                         <img :src="item.pic" width="100%" />
                                     </div>
-                                </router-link>
+                                </a>
 
                             </li>
                         </ul>
@@ -122,6 +122,21 @@
             })
           }
         })
+      },
+      toDetail(url){
+        /*window.wizViewManager.create('detail', {
+          src: "http://baidu.com",
+        x: 0,
+          y: 0
+      }, function (suc) {
+          window.alert(suc);
+        }, function (err) {
+          window.alert(err)
+        });
+        window.wizViewManager.load('detail');*/
+//       window.open(`http://baidu.com`, '_self', 'location=no')
+       window.open(`/#/detail`, '_self', 'location=no')
+//        cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
       },
       humanTime(timestamp){
         let vm = this;
