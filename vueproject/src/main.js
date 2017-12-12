@@ -3,8 +3,8 @@
 import Constant from './constant'
 window.Constant = Constant;
 // window.API_HOST = 'http://192.168.0.109:3011';
-// window.API_HOST = '/api';
-window.API_HOST = 'http://api.lingdublog.cc';
+window.API_HOST = '/api';
+// window.API_HOST = 'http://api.lingdublog.cc';
 
 
 import Vue from './Vue';

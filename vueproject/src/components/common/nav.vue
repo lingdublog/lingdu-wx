@@ -2,7 +2,7 @@
 
     <header class="header fixed-top">
         <ul class="pr" id="navBar">
-            <li :class="{'active': activeIndex==index}" v-for="cate,index in category"
+            <li :class="{'active': activeIndex==index}" v-for="(cate, index) in category"
                 @click="changeTab(index, cate.type)">
                 {{ cate.name }}
 
@@ -46,17 +46,18 @@
       },
       init(){
         let vm = this;
+//        console.log (vm.$parent)
 //        vm.getData ();
       },
       changeTab(index, type){
         let vm = this;
         vm.activeIndex = index;
-        vm.mySwiper.slideTo (index, 1000, false);
+        vm.$parent.mySwiper.slideTo (index, 500, false);
         let params = {
           type: type
         };
-//        vm.getData (params);
-      }
+        common.Vue.$emit('slide', params);
+      },
     },
 
   }

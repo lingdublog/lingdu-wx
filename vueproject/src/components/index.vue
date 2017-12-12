@@ -1,6 +1,15 @@
 <template>
     <div>
-        <nav-component></nav-component>
+        <header class="header fixed-top">
+            <ul class="pr" id="navBar">
+                <li :class="{'active': activeIndex==index}" v-for="(cate, index) in category"
+                    @click="changeTab(index, cate.type)">
+                    {{ cate.name }}
+
+                </li>
+            </ul>
+        </header>
+
         <div class="container">
         <div class="default-bg">
             <img src="../assets/img/loading.gif" alt="loading" width="100%">
@@ -13,7 +22,7 @@
 
                         <ul>
                             <li v-for="item in list">
-                                <a @click="toDetail()" class="article-link flex">
+                                <a @click="toDetail(item.url)" class="article-link flex">
                                     <div class="article-desc flex2">
                                         <h3 class="article-title tl">{{ item.title }}</h3>
                                         <div class="article-author">
@@ -105,6 +114,10 @@
       init(){
         let vm = this;
         vm.getData ();
+        common.Vue.$on('slide', function (params) {
+          console.log (params)
+          vm.getData(params);
+        });
       },
       getData(params){
         let vm = this;
@@ -123,6 +136,15 @@
           }
         })
       },
+      changeTab(index, type){
+        let vm = this;
+        vm.activeIndex = index;
+        vm.mySwiper.slideTo (index, 500, false);
+        let params = {
+          type: type
+        };
+        vm.getData(params);
+      },
       toDetail(url){
         /*window.wizViewManager.create('detail', {
           src: "http://baidu.com",
@@ -135,8 +157,9 @@
         });
         window.wizViewManager.load('detail');*/
 //       window.open(`http://baidu.com`, '_self', 'location=no')
-       window.open(`/#/detail`, '_self', 'location=no')
+//       window.open(`/#/detail`, '_self', 'location=no')
 //        cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+        this.$router.push({name: 'detail', params: {url: url}})
       },
       humanTime(timestamp){
         let vm = this;
@@ -159,6 +182,36 @@
 </script>
 
 <style>
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .header {
+        overflow-x: scroll;
+        height: 3.5rem;
+        background: #f4f5f6;
+        line-height: 3.5rem;
+    }
+
+    .header ul {
+        width: 100rem;
+        height: 3.5rem;
+
+    }
+
+    .header li {
+        float: left;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        width: 5rem;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+    .header li.active {
+        color: #42b983;
+        font-size: 1.2rem;
+    }
+
     .default-bg{
         position: absolute;left: 50%;
         top: 50%;margin-top: -4rem; margin-left:-4rem;width: 8rem;height: 8rem;z-index: -1;}
