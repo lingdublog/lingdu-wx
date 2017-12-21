@@ -1,13 +1,20 @@
 <template>
     <div>
-        <header class="header fixed-top pr">
-            <div class="back pl1">
-                <router-link :to="{name: 'index'}">< 返回</router-link>
+        <header id="header">
+            <div class="flex" id="title">
+                <div class="flex1 ac jc">
+                    <router-link :to="{name: 'index'}" class="f12">< 返回</router-link>
+                </div>
+                <div class="flex2 ac jc">
+                    <h1 class="f14 di">零度精选</h1>
+                </div>
+
+                <div class="flex1"></div>
             </div>
-            <h2 class="tc f12" style="font-weight: normal;">零度精选</h2>
         </header>
+
         <div class="container">
-            <div class="default-bg">
+            <div class="default-bg" style="z-index: -1">
                 <img src="../assets/img/loading.gif" alt="loading" width="100%">
                 <div class="loading-text f14 grey">零度精选</div>
             </div>

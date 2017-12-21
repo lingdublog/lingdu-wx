@@ -29,6 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
+        // target:'http://api.lingdublog.cc',
         target:'http://localhost:3010',
         changeOrigin: true,
         pathRewrite: {

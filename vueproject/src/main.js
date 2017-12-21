@@ -31,9 +31,6 @@ if (window.cordova) {
 }
 
 function deviceReady () {
-  if (cordova.InAppBrowser) {
-    window.open = cordova.InAppBrowser.open;
-  }
 
 
 }
